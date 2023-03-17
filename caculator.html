@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+        <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <title>Document</title>
+    </head>
+
+    <body>
+        <div class="container">
+            <form action="/" method="POST">
+                <input style="margin-top: 20px;" type="text" step="0.1"
+                    id="number1" name="number1" placeholder="So A" required>
+                <input style="margin-top: 20px;" type="text" step="0.1"
+                    id="number2" name="number2" placeholder="So B" required>
+                <br/><br/>
+                        <label for="operator">Phép tính:</label>
+                        <button onclick="add()">+</button>
+                        <button onclick="sub()">-</button>
+                        <button onclick="mul()">*</button>
+                        <button onclick="div()">/</button>
+                        <br/><br/>
+
+                                <h2>Ket qua la: </h2>
+
+                                <input name="result" id="result">
+                            </form>
+
+
+                        </div>
+                    </body>
+                    <script>
+function add(){
+    let a=document.getElementById("number1").value;
+    document.getElementById("number1").innerHTML=a;
+    let b=document.getElementById("number2").value;
+    document.getElementById("number2").innerHTML=b;
+if(isNaN(a)||isNaN(b)){
+    alert("Please Enter Number");
+    return;
+}
+let data={
+    a:a,
+    b:b,
+};
+fetch("http://localhost:3000/add",{
+    method: "POST",
+    headers:{
+        "Content-Type":"application/json",
+        Accept:"application/json",
+    },
+    body:JSON.stringify(data),
+}).then((res) => res.json()).then((data)=>{console.log("Ans",data.ans);
+document.getElementById("result").value=data.ans;
+});
+
+}
+function sub(){
+    let a=document.getElementById("number1").value;
+    document.getElementById("number1").innerHTML=a;
+    let b=document.getElementById("number2").value;
+    document.getElementById("number2").innerHTML=b;
+if(isNaN(a)||isNaN(b)){
+    alert("Please Enter Number");
+    return;
+}
+let data={
+    a:a,
+    b:b,
+};
+fetch("http://localhost:3000/sub",{
+    method: "POST",
+    headers:{
+        "Content-Type":"application/json",
+        Accept:"application/json",
+    },
+    body:JSON.stringify(data),
+}).then((res) => res.json()).then((data)=>{console.log("Ans",data.ans);
+document.getElementById("result").value=data.ans;
+});
+
+}
+function mul(){
+    let a=document.getElementById("number1").value;
+    document.getElementById("number1").innerHTML=a;
+    let b=document.getElementById("number2").value;
+    document.getElementById("number2").innerHTML=b;
+if(isNaN(a)||isNaN(b)){
+    alert("Please Enter Number");
+    return;
+}
+let data={
+    a:a,
+    b:b,
+};
+fetch("http://localhost:3000/mul",{
+    method: "POST",
+    headers:{
+        "Content-Type":"application/json",
+        Accept:"application/json",
+    },
+    body:JSON.stringify(data),
+}).then((res) => res.json()).then((data)=>{console.log("Ans",data.ans);
+document.getElementById("result").value=data.ans;
+});
+
+}
+function div(){
+    let a=document.getElementById("number1").value;
+    document.getElementById("number1").innerHTML=a;
+    let b=document.getElementById("number2").value;
+    document.getElementById("number2").innerHTML=b;
+if(isNaN(a)||isNaN(b)){
+    alert("Please Enter Number");
+    return;
+}
+let data={
+    a:a,
+    b:b,
+};
+fetch("http://localhost:3000/div",{
+    method: "POST",
+    headers:{
+        "Content-Type":"application/json",
+        Accept:"application/json",
+    },
+    body:JSON.stringify(data),
+}).then((res) => res.json()).then((data)=>{console.log("Ans",data.ans);
+document.getElementById("result").value=data.ans;
+});
+
+}
+
+</script>
+                </html>
