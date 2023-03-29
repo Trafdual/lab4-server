@@ -1,25 +1,18 @@
 const mongoose = require("mongoose");
 
 const PhotoSchema = new mongoose.Schema({
-  albumId: {
-    type: String,
-    required: true,
-  },
-  id: {
+  ten: {
+    type: String
+},
+tuoi: {
     type: Number,
-    default: 0,
-  },
-  title: {
-    type: String
-  },
-  url: {
-    type: String
-   
-  },thumbnailUrl: {
-    type: String
-  },
+    default: 0
+},
+diachi: {
+    type: String,
+    required: true
+}
 });
-
 const PhotoModel = mongoose.model("baitaps", PhotoSchema);
 
 module.exports = PhotoModel;
